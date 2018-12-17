@@ -86,6 +86,18 @@ float* Figure::getBoundingBox(){
 	return boxCoord;
 }
 
-Shape* getClosest(float location[2], int n) {
+Shape* Figure::getClosest(float location[2], int n) {
+	float x = location[0];
+	float y = location[1];
+	int numberToCompare = n;
+	
+	if (n <= 1)
+		n = 3; //To make it a minimum of three;
+	for (int i = 0; i < (numberToCompare-1); i++)
+	{
+		if ((*(static_cast<Polygon*>(shapeArray[i]))).position() > (*(static_cast<Polygon*>(shapeArray[i]))).position());
+					
+	}
+	
 
 }
