@@ -87,17 +87,41 @@ float* Figure::getBoundingBox(){
 }
 
 Shape* Figure::getClosest(float location[2], int n) {
-	float x = location[0];
-	float y = location[1];
-	int numberToCompare = n;
-	
-	if (n <= 1)
-		n = 3; //To make it a minimum of three;
-	for (int i = 0; i < (numberToCompare-1); i++)
-	{
-		if ((*(static_cast<Polygon*>(shapeArray[i]))).position() > (*(static_cast<Polygon*>(shapeArray[i]))).position());
-					
-	}
+	Shape **shapeArrayTwoTemp = new Shape*[1];
+	int numToCheck = n;
+	float locations[2];
+	locations[0] = location[0];
+	locations[1] = location[1];
 	
 
+	for (int i = 0; i < numToCheck - 1; i++ )
+	{
+		for (int j = 0; j < (numToCheck - 1) - i; j++)
+		{
+			if ((*(static_cast<Polygon*>(shapeArray[j]))).distance(locations) > (*(static_cast<Polygon*>(shapeArray[j + 1]))).distance(locations))
+			{
+				std::cout << (*(static_cast<Polygon*>(shapeArray[j]))).distance(locations);
+				std::copy(shapeArray + j, shapeArray + (j + 1), shapeArrayTwoTemp);
+				//std::cout << "This is the array in temp array" << std::endl;
+				//(*(static_cast<Polygon*>(shapeArrayTwoTemp[0]))).print();
+				shapeArray[j] = shapeArray[j + 1];
+				std::cout << "This is the shape in shapeArray" << j << std::endl;
+				//(*(static_cast<Polygon*>(shapeArray[j]))).print();
+				shapeArray[j + 1] = shapeArrayTwoTemp[0];
+
+			}
+
+
+			
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << "This is the " << i << " closest shape. \n";
+		(*(static_cast<Polygon*>(shapeArray[i]))).print();
+		std::cout << "The distance to the coordinate is: \n";
+		std::cout << (*(static_cast<Polygon*>(shapeArray[i]))).distance(locations);
+	}
+
+	return *shapeArray;
 }

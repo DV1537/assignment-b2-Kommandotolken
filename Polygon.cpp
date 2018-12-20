@@ -315,7 +315,28 @@ public:
 			}
 			else
 			{
+
+				float xHighest = xCoord[0];
+				float yHighest = yCoord[0];
+				float xLowest = xCoord[0];
+				float yLowest = yCoord[0];
 				for (int n = 0; n < numOfSides; n++)
+				{
+					if (xCoord[n] < xLowest)
+						xLowest = xCoord[n];
+					if (yCoord[n] < yLowest)
+						yLowest = yCoord[n];
+					if (yCoord[n] > yHighest)
+						yHighest = yCoord[n];
+					if (xCoord[n] > xHighest)
+						xHighest = xCoord[n];
+				}
+
+				float dy = yHighest + yLowest;
+				float dx = xHighest + xLowest;
+				centerCoord[0] = dx / 2;
+				centerCoord[1] = dy / 2;
+				/*for (int n = 0; n < numOfSides; n++)
 				{
 					centerY += yCoord[n];
 					centerX += xCoord[n];
@@ -324,6 +345,7 @@ public:
 				centerY /= 2;
 				centerCoord[0] = centerX;
 				centerCoord[1] = centerY;
+			}*/
 			}
 		}
 		return centerCoord;
@@ -405,6 +427,18 @@ public:
 		float sCoord[2];
 		sCoord[0] = s->position()[0];
 		sCoord[1] = s->position()[1];
+		float d = sqrt(pow(sCoord[0] - coord[0], 2) + pow(sCoord[1] - coord[1], 2));
+
+
+
+		return d;
+	}
+	//Overloaded to take only one coordinate.
+	float distance(float coords[2]) const {
+
+		float sCoord[2];
+		sCoord[0] = coords[0];
+		sCoord[1] = coords[1];
 		float d = sqrt(pow(sCoord[0] - coord[0], 2) + pow(sCoord[1] - coord[1], 2));
 
 

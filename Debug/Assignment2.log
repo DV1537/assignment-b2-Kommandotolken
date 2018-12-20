@@ -1,6 +1,7 @@
-﻿  Assignment2.cpp
+﻿  pch.cpp
+  Assignment2.cpp
   Figure.cpp
   Polygon.cpp
   Generating Code...
-c:\users\henrikasus\documents\assignment-b1-kommandotolken2\assignment2\figure.cpp(86): warning C4172: returning address of local variable or temporary: boxCoord
-  Assignment2.vcxproj -> C:\Users\HenrikAsus\Documents\assignment-b1-Kommandotolken2\Assignment2\Debug\Assignment2.exe
+c:\users\henrikasus\documents\assignment-b2-kommandotolken\figure.cpp(86): warning C4172: returning address of local variable or temporary: boxCoord
+  Assignment2.vcxproj -> C:\Users\HenrikAsus\Documents\assignment-b2-Kommandotolken\Debug\Assignment2.exe
