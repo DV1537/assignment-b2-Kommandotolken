@@ -15,18 +15,9 @@ Figure::Figure(int capacity)
 }
 Figure::~Figure() {
 	delete[] shapeArray;
+	delete[] shapeArrayTwoTemp;
 }
-/*void Figure::addShape(Shape *s, float * floatArray, int numberOfPoints) {
-	
-	if (capacity <= numberOfFigures)
-		capacity *= 2;
-	s = new Polygon(floatArray, numberOfPoints);
-	for (int i = numberOfFigures; i < capacity; i++)
-	{
-		shapeArray[i] = s;
-	}
-	numberOfFigures++;
-}*/
+
 
 void Figure::addShape(Shape *s) {
 	if (numberOfFigures >= capacity)
@@ -87,7 +78,7 @@ float* Figure::getBoundingBox(){
 }
 
 Shape* Figure::getClosest(float location[2], int n) {
-	Shape **shapeArrayTwoTemp = new Shape*[1];
+	shapeArrayTwoTemp = new Shape*[1];
 	int numToCheck = n;
 	float locations[2];
 	locations[0] = location[0];

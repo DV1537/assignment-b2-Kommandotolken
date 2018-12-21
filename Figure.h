@@ -10,13 +10,13 @@ private:
 	float * floatArray;
 	int numberOfPoints;
 	int numberOfFigures = 0;
-	
+	Shape **shapeArrayTwoTemp = nullptr;
 
 public:
 	Figure();
 	~Figure();
 	Figure(int);
-	void addShape(Shape *s, float * floatArray, int numberOfPoints);
+	
 	void addShape(Shape *s);
 	float* getBoundingBox();
 	Shape* getClosest(float location[2], int n);
