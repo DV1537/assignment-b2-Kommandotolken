@@ -15,7 +15,7 @@ public:
 	//Shape(float * a, int c);
 	//Shape();
 	virtual ~Shape() {
-		std::cout << "Base destructor called.\n";
+		//std::cout << "Base destructor called.\n";
 	}
 	virtual void operator=(const Shape &s) = 0;
 

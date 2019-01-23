@@ -1,7 +1,4 @@
-﻿  pch.cpp
-  Assignment2.cpp
-  Figure.cpp
-  Polygon.cpp
-  Generating Code...
+﻿  Figure.cpp
+c:\users\henrikasus\documents\assignment-b2-kommandotolken\figure.cpp(134): warning C4715: 'Figure::getClosest': not all control paths return a value
 c:\users\henrikasus\documents\assignment-b2-kommandotolken\figure.cpp(77): warning C4172: returning address of local variable or temporary: boxCoord
   Assignment2.vcxproj -> C:\Users\HenrikAsus\Documents\assignment-b2-Kommandotolken\Debug\Assignment2.exe

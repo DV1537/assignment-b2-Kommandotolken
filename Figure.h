@@ -19,7 +19,9 @@ public:
 	
 	void addShape(Shape *s);
 	float* getBoundingBox();
-	Shape* getClosest(float location[2], int n);
+	Shape *getClosest(float location[2], int n);
+	void printClosest(float location[2], int n);
+	void insertionSort(int n);
 
 };
 

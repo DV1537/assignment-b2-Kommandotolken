@@ -22,7 +22,7 @@ public:
 
 	~Polygon()
 	{
-		std::cout << "Derived destructor called \n";
+		
 		delete[] xCoord;
 		delete[] yCoord;
 		delete[] coord;
