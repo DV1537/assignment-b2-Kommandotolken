@@ -6,7 +6,7 @@
 class Shape {
 private:
 
-	//float * coord;
+	
 	int counter;
 
 

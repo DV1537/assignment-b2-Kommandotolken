@@ -157,7 +157,7 @@
     <ClInclude Include="Shape.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Assignment2.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

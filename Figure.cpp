@@ -14,8 +14,13 @@ Figure::Figure(int capacity)
 	this->shapeArray = new Shape*[capacity];
 }
 Figure::~Figure() {
+	
 	delete[] shapeArray;
+	delete[] floatArray;
+	delete[] shapeArrayTempGetClosest;
 	delete[] shapeArrayTwoTemp;
+	shapeArray = nullptr;
+	shapeArrayTwoTemp = nullptr;
 }
 
 
@@ -25,6 +30,10 @@ void Figure::addShape(Shape *s) {
 
 		Shape **shapeArrayTemp = new Shape*[numberOfFigures];
 		std::copy(shapeArray, shapeArray + capacity, shapeArrayTemp);
+		for (int i = 0; i < capacity; i++)
+		{
+			delete[] shapeArray[i];
+		}
 		delete[] shapeArray;
 		shapeArray = shapeArrayTemp;
 	}
@@ -81,7 +90,7 @@ Shape* Figure::getClosest(float location[2], int n) {
 	if (n < 1)
 		return 0;
 
-	shapeArrayTwoTemp = new Shape*[1];
+	
 	int numToCheck = n;
 	float locations[2];
 	locations[0] = location[0];
@@ -93,12 +102,13 @@ Shape* Figure::getClosest(float location[2], int n) {
 
 		while (j > 0 && (*(static_cast<Polygon*>(shapeArray[j]))).distance(locations) < (*(static_cast<Polygon*>(shapeArray[j - 1]))).distance(locations))
 		{
-			std::copy(shapeArray + j, shapeArray + (j+1), shapeArrayTwoTemp);
+			std::copy(shapeArray + j, shapeArray + (j+1), shapeArrayTempGetClosest);
 			std::copy(shapeArray + (j-1), shapeArray + j, shapeArray + j);
 			shapeArray[j] = shapeArray[j - 1];
 			shapeArray[j - 1] = shapeArrayTwoTemp[0];
 			j--;
 		}
+		
 		return *shapeArray;
 	}
 

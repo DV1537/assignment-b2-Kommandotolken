@@ -13,9 +13,9 @@ private:
 	int numberOfPoints;
 	int numOfSides;
 	float centerCoord[2];
-	float * extraCoords;
-	float * xCoord;
-	float  * yCoord;
+	float * extraCoords = nullptr;
+	float * xCoord = nullptr;
+	float  * yCoord = nullptr;
 
 
 public:
@@ -27,7 +27,7 @@ public:
 		delete[] yCoord;
 		delete[] coord;
 		delete[] extraCoords;
-
+		
 
 	}
 
@@ -336,16 +336,7 @@ public:
 				float dx = xHighest + xLowest;
 				centerCoord[0] = dx / 2;
 				centerCoord[1] = dy / 2;
-				/*for (int n = 0; n < numOfSides; n++)
-				{
-					centerY += yCoord[n];
-					centerX += xCoord[n];
-				}
-				centerX /= 2;
-				centerY /= 2;
-				centerCoord[0] = centerX;
-				centerCoord[1] = centerY;
-			}*/
+			
 			}
 		}
 		return centerCoord;

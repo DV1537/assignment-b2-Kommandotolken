@@ -11,6 +11,7 @@ private:
 	int numberOfPoints;
 	int numberOfFigures = 0;
 	Shape **shapeArrayTwoTemp = nullptr;
+	Shape **shapeArrayTempGetClosest = new Shape*[1];
 
 public:
 	Figure();
@@ -21,7 +22,7 @@ public:
 	float* getBoundingBox();
 	Shape *getClosest(float location[2], int n);
 	void printClosest(float location[2], int n);
-	void insertionSort(int n);
+	
 
 };
 
