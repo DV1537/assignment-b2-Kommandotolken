@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Shape.h"
 #include "Figure.h"
-#include "Polygon.cpp"
+#include "Polygon.h"
 
 Figure::Figure() 
 {
@@ -154,7 +154,7 @@ void Figure::printClosest(float location[2],int n) {
 	{
 		std::cout << "This is the " << i << " closest shape. \n";
 		(*(static_cast<Polygon*>(shapeArray[i]))).print();
-		std::cout << "The distance to the coordinate is: \n";
-		std::cout << (*(static_cast<Polygon*>(shapeArray[i]))).distance(locations);
+		std::cout << "The distance to the coordinate is: ";
+		std::cout << (*(static_cast<Polygon*>(shapeArray[i]))).distance(location) << std::endl;
 	}
 };

@@ -1,26 +1,8 @@
 #include "pch.h"
 #include "Functions.h"
-#include "Shape.h"
+#include "Polygon.h"
 
-class Polygon : public Shape {
-private:
-
-	float * coord;
-	std::string type;
-	float polyArea;
-	int capacity = 10;
-	bool isConv;
-	int numberOfPoints;
-	int numOfSides;
-	float centerCoord[2];
-	float * extraCoords = nullptr;
-	float * xCoord = nullptr;
-	float  * yCoord = nullptr;
-
-
-public:
-
-	~Polygon()
+	Polygon::~Polygon()
 	{
 		
 		delete[] xCoord;
@@ -31,14 +13,14 @@ public:
 
 	}
 
-	Polygon() {
+	Polygon::Polygon() {
 		type = "polygon";
 	}
-	void operator=(const Shape &p)
+	void Polygon::operator=(const Shape &p)
 	{
 		std::cout << "You can only do this with polygons.";
 	}
-	void operator=(const Polygon &p)
+	void Polygon::operator=(const Polygon &p)
 	{
 		if (this == &p)
 		{
@@ -66,7 +48,7 @@ public:
 		}
 	}
 
-	void operator+(const float *plusCoord)
+	void Polygon::operator+(const float *plusCoord)
 	{
 		//if counter >= capacity capacity*=2
 		extraCoords = new float[capacity];
@@ -82,7 +64,7 @@ public:
 
 
 	}
-	void operator+(Shape &s)
+	void Polygon::operator+(Shape &s)
 	{
 		if (this == &s)
 		{
@@ -124,7 +106,7 @@ public:
 		}
 
 	}
-	void operator<<(const Shape &s) {
+	void Polygon::operator<<(const Shape &s) {
 
 		std::cout << "The vertices for this " << type << " are: \n";
 		int j = 0;
@@ -134,7 +116,7 @@ public:
 			j += 2;
 		}
 	}
-	Polygon(float * floatArray, int numberOfPoints) {
+	Polygon::Polygon(float * floatArray, int numberOfPoints) {
 
 		this->numberOfPoints = numberOfPoints;
 
@@ -184,7 +166,7 @@ public:
 			type = "polygon";
 		}
 	}
-	float area() {
+	float Polygon::area() {
 
 		bool isInter;
 		
@@ -230,7 +212,7 @@ public:
 
 
 
-	float circumference() const {
+	float Polygon::circumference() const {
 
 		float polyCircumference = 0;
 		int l = numOfSides - 1;
@@ -262,7 +244,7 @@ public:
 
 
 
-	float *position() {
+	float* Polygon::position() {
 
 		float centerX = 0;
 		float centerY = 0;
@@ -344,7 +326,7 @@ public:
 
 
 
-	bool isConvex() const {
+	bool Polygon::isConvex() const {
 		bool isConv = false;
 		if (type == "point" || type == "line" || type == "triangle")
 		{
@@ -389,7 +371,7 @@ public:
 
 
 
-	bool isIntersect() const {
+	bool Polygon::isIntersect() const {
 		float dy;
 		float dx;
 		float interiorAngle = 0;
@@ -413,7 +395,7 @@ public:
 			return false;
 	}
 
-	float distance(Shape *s) const {
+	float Polygon::distance(Shape *s) const {
 
 		float sCoord[2];
 		sCoord[0] = s->position()[0];
@@ -425,7 +407,7 @@ public:
 		return d;
 	}
 	//Overloaded to take only one coordinate.
-	float distance(float coords[2]) const {
+	float Polygon::distance(float coords[2]) const {
 
 		float sCoord[2];
 		sCoord[0] = coords[0];
@@ -437,20 +419,20 @@ public:
 		return d;
 	}
 
-	std::string getType() const
+	std::string Polygon::getType() const
 	{
 		return type;
 	}
 
-	float *  getCoord() const {
+	float *  Polygon::getCoord() const {
 		return coord;
 	}
 
-	int getNumberOfPoints() const {
+	int Polygon::getNumberOfPoints() const {
 		return numberOfPoints;
 	}
 
-	float getLowestX() {
+	float Polygon::getLowestX() {
 		float lowestX = *xCoord;
 
 		for (int i = 1; i < (numberOfPoints / 2); i++)
@@ -464,7 +446,7 @@ public:
 		return lowestX;
 	}
 
-	float getLowestY() {
+	float Polygon::getLowestY() {
 		float lowestY = *(yCoord + 0);
 
 		for (int i = 1; i < (numberOfPoints / 2); i++)
@@ -477,7 +459,7 @@ public:
 		return lowestY;
 	}
 
-	float getHighestX() {
+	float Polygon::getHighestX() {
 		float highestX = *(xCoord + 0);
 
 		for (int i = 1; i < (numberOfPoints / 2); i++)
@@ -490,7 +472,7 @@ public:
 		return highestX;
 	}
 
-	float getHighestY() {
+	float Polygon::getHighestY() {
 		float highestY = *(yCoord + 0);
 		
 		for (int i = 1; i < (numberOfPoints / 2); i++)
@@ -502,7 +484,7 @@ public:
 		}
 		return highestY;
 	}
-	void print() {
+	void Polygon::print() {
 		std::cout.precision(3);
 		std::cout << "The type is: " << getType() << "\n";
 		std::cout << "The area is: " << area() << "\n";
@@ -510,4 +492,3 @@ public:
 		std::cout << "The center coordinate is: " << position()[0] << " and " << position()[1] << "\n";
 	}
 
-};

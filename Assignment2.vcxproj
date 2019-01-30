@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Figure.h" />
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="Polygon.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Shape.h" />
   </ItemGroup>
